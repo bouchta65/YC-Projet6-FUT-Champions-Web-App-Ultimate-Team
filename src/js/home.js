@@ -1,11 +1,7 @@
-const burgerIcon = document.getElementById("burger-icon");
-const navbar = document.querySelector(".navbar");
-const closeNavbar = document.getElementById("close-navbar");
+const burger = document.querySelector('.burger');
+const navLinks = document.querySelector('.nav-links');
 
-burgerIcon.addEventListener("click", () => {
-  navbar.classList.add("nav-active");
-});
-
-closeNavbar.addEventListener("click", () => {
-  navbar.classList.remove("nav-active");
+burger.addEventListener('click', () => {
+  navLinks.classList.toggle('show');
+  burger.classList.toggle('active'); 
 });
