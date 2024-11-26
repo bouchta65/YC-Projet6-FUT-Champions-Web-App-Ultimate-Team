@@ -323,7 +323,7 @@ button {
 @media (max-width: 600px) {
 .text-section {
   padding: 40px;
-  top: 15%;
+  top: 10%;
 }
 
 .blue-title {
@@ -343,12 +343,6 @@ button {
 }
 }
 
-@media (max-width:500px){
-  .player-img img{
-    width: 100%;
- 
-  }
-}
 
 
 .burger.active div:nth-child(1) {
