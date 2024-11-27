@@ -89,12 +89,6 @@
 
 
 
-.player-img img{
-  width: auto;
-  height: 600px;
-  bottom: 0;
-  position: absolute;
-}
 
 .burger {
   display: none; 
@@ -117,7 +111,9 @@
   width: 100%;
   height: 100vh;
   background-size: cover;
+  background-repeat: no-repeat;
   position: relative;
+
 }
 
 
@@ -126,7 +122,7 @@
   width: auto;
   height: 654px;
   bottom: 0;
-  left: 0;
+  left: 120px;
   position: absolute;
  
 }
@@ -216,6 +212,16 @@ button {
     
   }
 }
+@media (max-width: 1100px) {
+  .player-img img{
+    width: auto;
+    height: 654px;
+    bottom: 0;
+    left: 30px;
+    position: absolute;
+   
+  }
+}
 @media (max-width: 900px) {
   .text-section{
     position: absolute;
@@ -225,6 +231,7 @@ button {
     left: 50%;
     transform: translateX(-50%);
     z-index: 100;
+
 }
 .text-section {
   padding: 40px;
@@ -245,51 +252,52 @@ button {
 button {
   font-size: 24px;
 }
+.burger {
+  display: block; 
+}
+
+.nav-links {
+  display: none; 
+  flex-direction: column;
+  background-color: #000000;
+  position: absolute;
+  top: 100px; 
+  right: 0;
+  width: 100%;
+  padding: 10px 0;
+  z-index: 100000;
+}
+.nav-links li{
+margin-left: 20px;
+}
+
+
+.nav-links.show {
+  display: flex; 
+}
+
+.player-img img{
+  width: auto;
+  height: 654px;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  position: absolute;
+  opacity: 0.3;
+ 
+}
 }
 
 
 
 
-
-@media (max-width: 900px) {
-  .burger {
-    display: block; 
-  }
-
-  .nav-links {
-    display: none; 
-    flex-direction: column;
-    background-color: #000000;
-    position: absolute;
-    top: 100px; 
-    right: 0;
-    width: 100%;
-    padding: 10px 0;
-    z-index: 100000;
-  }
-  .nav-links li{
- margin-left: 20px;
-  }
-
-
-  .nav-links.show {
-    display: flex; 
-  }
-
-  .player-img img{
-    width: auto;
-    height: 654px;
-    bottom: 0;
-    left: unset;
-    position: absolute;
-   
-  }
-}
 @media (max-width: 600px) {
 .text-section {
   padding: 40px;
-  top: 10%;
+  top: 15%;
+  
 }
+
 
 .blue-title {
   font-size: 40px;
@@ -310,8 +318,11 @@ button {
 
 @media (max-width:500px){
   .player-img img{
-    width: 100%;
- 
+    height: 550px;
+    bottom: 40px;
+  }
+  .blue-div{
+    height: 120px;
   }
 }
 
@@ -327,7 +338,7 @@ button {
 }
 
 
-
+// players page :
 .heroplayer-img{
   background-image: url('../images/players2.png');
   width: 100%;
@@ -374,25 +385,25 @@ button {
 
 .search-input:focus,
 .filter-input:focus {
-  border-color: #ff6f61;
-  box-shadow: 0 0 8px #ff6f61; 
+  border-color: #05f2fd;
+  box-shadow: 0 0 8px #05f2fd; 
 }
 
 .filter-input option {
-  color: #000; 
+  color: #ffffff; 
 }
 
 
 .player-table thead {
   background-color: #333333; 
-  color: #ff6f61; 
+  color: #05f2fd; 
   text-transform: uppercase;
 }
 
 .player-table th {
   padding: 15px;
   font-size: 14px;
-  border-bottom: 2px solid #ff6f61;
+  border-bottom: 2px solid #05f2fd;
   text-align: left;
 }
 
@@ -421,8 +432,8 @@ button {
 
 .player-table tbody tr:hover {
   background-color: #3a3a3a; 
-  box-shadow: inset 0 0 10px #ff6f61; 
-  cursor: pointer;
+  box-shadow: inset 0 0 10px #05f2fd; 
+  
 }
 
 
@@ -537,4 +548,44 @@ button {
   .player-table td {
     padding: 8px;
   }
+}
+
+.match-img {
+  background-image: url('../images/matche.jpg');
+  width: 100%;
+  height: 100vh;
+  background-size: cover;
+  position: relative;
+}
+
+.bg-matche {
+  position: absolute;
+  width: 90%;
+  height: 80vh;
+  background-color: #1e1e1e; 
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7); 
+  overflow: auto; 
+  left: 50%;
+  transform: translateX(-50%);
+  top: 100px;
+}
+
+.match-table {
+  width: 100%;
+  height: 100%; /* Ensure the table covers the full container height */
+  display: flex;
+  justify-content: flex-start; /* Align the content to the left */
+  align-items: flex-start; /* Align content to the top */
+  position: relative;
+}
+
+.img-terain img {
+  width: auto;
+  height: 700px; /* Adjust height for the image size */
+  transform: rotate(90deg); /* Rotate the image 90 degrees */
+  position: absolute;
+  top: -100px;
+  right: 150px;
 }
