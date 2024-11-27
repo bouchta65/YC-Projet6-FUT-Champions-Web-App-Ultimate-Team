@@ -21,7 +21,6 @@
       <div class="logo">
         <a href="home.html"><img src="../images/logo.png" alt="Logo"></a>
       </div>
-      <!-- Burger Menu -->
       <div class="burger">
         <div></div>
         <div></div>
@@ -39,14 +38,62 @@
 
   <section class="hero-section">
     <div class="heroplayer-img">
-   <div class="cardplayers">
-    
-   </div>
+        <div class="cardplayers">
+            <div class="filter-section">
+              <input type="text" id="search" placeholder="Search by name" class="search-input">
+              <select id="nationality-filter" class="filter-input">
+                <option value="">Filter by Nationality</option>
+                <option value="Argentina">Argentina</option>
+                <option value="Brazil">Brazil</option>
+                <option value="France">France</option>
+              </select>
+              <select id="club-filter" class="filter-input">
+                <option value="">Filter by Club</option>
+                <option value="Inter Miami">Inter Miami</option>
+                <option value="Barcelona">Barcelona</option>
+                <option value="Paris Saint-Germain">Paris Saint-Germain</option>
+              </select>
+              <select id="sort-by" class="filter-input">
+                <option value="rating">Sort by Rating</option>
+                <option value="pace">Sort by Pace</option>
+                <option value="shooting">Sort by Shooting</option>
+                <option value="passing">Sort by Passing</option>
+              </select>
+            </div>
+            <div class="table-data">
+            <table class="player-table">
+              <thead>
+                <tr>
+                  <th>Photo</th>
+                  <th>Name</th>
+                  <th>Nationality</th>
+                  <th>Club</th>
+                  <th>Position</th>
+                  <th>Rating</th>
+                  <th>Pace</th>
+                  <th>Shooting</th>
+                  <th>Passing</th>
+                  <th>Dribbling</th>
+                  <th>Defending</th>
+                  <th>Physical</th>
+                </tr>
+              </thead>
+              <tbody class="body-table">
 
-  
-    </div>
+              </tbody>
+            </table>
+            </div>
+            <div class="pagination">
+                <button id="prev-page" class="pagination-btn" disabled>&laquo; Prev</button>
+                <div class="pagination-numbers" id="pagination-numbers"></div>
+                <button id="next-page" class="pagination-btn">Next &raquo;</button>
+              </div>
+          </div>
+          
+</div>
 </section>
     <script src="../js/home.js"></script>
     <script src="../js/players.js"></script>
+    
 </body>
 </html>
