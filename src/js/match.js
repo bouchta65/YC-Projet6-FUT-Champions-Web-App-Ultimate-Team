@@ -1,5 +1,4 @@
 const playersData = JSON.parse(localStorage.getItem("players")); 
-const buttonAdd = document.querySelector('.add-player-box')
 
 let table = "";
 function addPlayer(){
@@ -35,10 +34,11 @@ function addPlayer(){
         </div>
         `
         document.querySelector('.player-cards').innerHTML +=table
+        
     }
 }
 
-addPlayer()
+
 
 
 let dataPlus = ''
@@ -65,28 +65,7 @@ displayPlayers();
 
 
 
-const playerPopup = document.querySelector('.player-popup')
 
-document.querySelector('.close-popup-btn').addEventListener('click',()=>{
-    playerPopup.classList.toggle("block")
-})
-
-
-playerPopup.addEventListener('click',()=>{
-    playerPopup.classList.toggle("block") 
-})
-
-
-document.querySelector('.popup-content').addEventListener('click', (e) => {
-     e.stopPropagation(); 
-})
-
-
-document.querySelectorAll('.add-player-box').forEach((box) => {box.addEventListener('click',()=>{
-    playerPopup.classList.toggle("block")
-   
-})
-})
 
 function playersPosition(){
     const positionSelect = document.getElementById("Position-filter");
@@ -133,5 +112,27 @@ function playersPosition(){
 }
 document.getElementById("Position-filter").addEventListener("change", playersPosition);
 playersPosition();
+addPlayer()
+const playerPopup = document.querySelector('.player-popup')
 
+document.querySelector('.close-popup-btn').addEventListener('click',()=>{
+    playerPopup.classList.toggle("block")
+})
+
+
+playerPopup.addEventListener('click',()=>{
+    playerPopup.classList.toggle("block") 
+})
+
+
+document.querySelector('.popup-content').addEventListener('click', (e) => {
+     e.stopPropagation(); 
+})
+
+
+document.querySelectorAll('.add-player-box').forEach((box) => {box.addEventListener('click',()=>{
+    playerPopup.classList.toggle("block")
+   
+})
+})
 
