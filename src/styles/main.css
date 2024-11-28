@@ -530,29 +530,6 @@ button {
   top: 100px;
 }
 
-.match-table {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 25px;
-}
-
-.img-terain {
-  width: 700px;
-  height: 500px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.img-terain img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-}
-
 .player-bord {
   width: 41%;
   height: 500px;
@@ -574,32 +551,36 @@ button {
   color: #000000;
 }
 
-.player-cards1 {
+.match-table {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 25px;
+}
+
+.img-terain {
+  width: 100%;
+  max-width: 700px;
+  height: auto;
+  position: relative;
+  margin: 0 auto;
+}
+
+.img-terain img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.plus-cards {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(94px, 1fr));
   gap: 10px;
   justify-items: center;
   justify-content: center;
   width: 100%;
-}
-
-.add-player-box {
-  width: 80px;
-  height: 80px;
-  background-color: #292929;
-  border-radius: 10px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-  transition: transform 0.2s, box-shadow 0.2s;
-  position: relative;
-}
-
-.add-player-box:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.8);
 }
 
 .plus-icon {
@@ -620,7 +601,7 @@ button {
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.7);
-  display: flex;
+  display: none;
   justify-content: center;
   align-items: center;
   z-index: 1000;
@@ -628,7 +609,7 @@ button {
 }
 
 .block {
-  display: none;
+  display: flex;
 }
 
 .popup-content {
@@ -768,6 +749,54 @@ h3 {
 
 .close-popup-btn:hover {
   background-color: #333;
+}
+
+.player-small-card {
+  width: 100px;
+  height: 130px;
+  background-color: #1e1e1e;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.player-small-card:hover {
+  transform: scale(1.05);
+}
+
+.player-header {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.player-image {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #ddd;
+}
+
+.player-info {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.player-name {
+  font-size: 10px;
+  font-weight: bold;
+  color: #ffffff;
+  margin-bottom: 5px;
+}
+
+.player-rating {
+  font-size: 8px;
+  color: #ffffff;
 }
 
 /*# sourceMappingURL=main.css.map */
