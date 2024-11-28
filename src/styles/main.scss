@@ -614,7 +614,28 @@ button {
   object-fit: contain;
 }
 
+.add-player-box {
+  width: 10%; 
+  height: 10%;
+  background-color: #292929;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+  transition: transform 0.2s, box-shadow 0.2s;
+  position: absolute;
+  top: 0;  
+  left: 0; 
+}
 
+@media (max-width: 768px) {
+  .add-player-box {
+    width: 12%;  
+    height: 12%;
+  }
+}
 
 .plus-cards {
   display: grid;
