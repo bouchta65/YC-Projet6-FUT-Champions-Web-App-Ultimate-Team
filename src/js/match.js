@@ -34,8 +34,12 @@ function addPlayer(){
         </div>
         `
         document.querySelector('.player-cards').innerHTML +=table
+
+   
+    
         
     }
+
 }
 
 
@@ -65,6 +69,15 @@ displayPlayers();
 
 
 
+
+
+function displayPopupSecond(){
+    document.querySelectorAll('.add-player-box').forEach((box) => {
+        box.addEventListener('click', () => {
+            playerPopup.classList.toggle("block");
+        });
+    })
+}
 
 
 function playersPosition(){
@@ -109,11 +122,15 @@ function playersPosition(){
                   <div class="add-player-box" data-index="10" style="top: 80%; left: 70%;"> <span class="plus-icon">+</span> </div>
         `
     }
+    displayPopupSecond()
+    
 }
+
+const playerPopup = document.querySelector('.player-popup')
 document.getElementById("Position-filter").addEventListener("change", playersPosition);
 playersPosition();
 addPlayer()
-const playerPopup = document.querySelector('.player-popup')
+displayPopupSecond()
 
 document.querySelector('.close-popup-btn').addEventListener('click',()=>{
     playerPopup.classList.toggle("block")
@@ -135,4 +152,9 @@ document.querySelectorAll('.add-player-box').forEach((box) => {box.addEventListe
    
 })
 })
+
+
+
+
+
 
