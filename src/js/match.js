@@ -1,13 +1,13 @@
 // Les Variables : 
 let filtredPlayers = []
 let dataPlus = ''
-
+let ratingtotal = 0
 const playerCard = document.querySelector('.player-cards')
 const plusCard = document.querySelector('.plus-cards')
 const playerPopup = document.querySelector('.player-popup')
 const selectedPosition =  document.getElementById("Position-filter")
-const positionSelect = document.getElementById("Position-filter");
-
+const positionSelect = document.getElementById('Position-filter');
+const ratingstatistics = document.getElementById('ratingstatistics')
 const selectedPlayers = JSON.parse(localStorage.getItem('selectedPlayers')) || [];
 const playersData = JSON.parse(localStorage.getItem("players")); 
 
@@ -18,6 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
     playersPosition()
     displayPlayersList()
     resetData()
+    someStatistics()
 });
 
 // Function to display players in the popup
@@ -123,6 +124,7 @@ function playersPosition(){
                   <div class="add-player-box rw" data-index="10" style="top: 80%; left: 70%;"> <span class="plus-icon">+</span> </div>
         `
     }
+    
     resetData()
     displayPlayerSelected()
     replacePlusToPlayer() 
@@ -164,6 +166,7 @@ function displayPlayerSelected() {
                         
                 document.querySelectorAll('.player-card').forEach((card) => {
                     card.addEventListener('click', () => {
+                        
                         const playerIndex = card.getAttribute('data-index'); 
                         const playerSlectedData = filtredPlayers[playerIndex];
 
@@ -193,7 +196,7 @@ function displayPlayerSelected() {
                                 boxIndex: boxSelected.dataset.index, 
                                 player: playerSlectedData           
                             });
-
+                            someStatistics()
                             replacePlusToPlayer()
                             localStorage.setItem("selectedPlayers", JSON.stringify(selectedPlayers));
                         }
@@ -228,6 +231,19 @@ function replacePlusToPlayer(){
                     <span class="player2-positon">${player.position}</span>
                 `;
             }
+            
         }
+        someStatistics()
+        
+}
+
+// Funtion that calcilate the rating total players 
+function someStatistics(){
+    ratingtotal = 0; 
+    for(let i = 0; i<selectedPlayers.length;i++){
+        ratingtotal +=  selectedPlayers[i].player.rating
+    }
+    let result  = (ratingtotal / 11).toFixed(2);
+    ratingstatistics.value = "Power Score : "+ result
 }
 
