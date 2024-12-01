@@ -8,6 +8,9 @@ const searchinput = document.querySelector('.search-input')
 const sortinput = document.getElementById('sort-by')
 const positioninput = document.getElementById('position-filter')
 const nationalityinput = document.getElementById('nationality-filter')
+const playerPopup = document.querySelector('.player-popup')
+const addplayer = document.getElementById('addplayer')
+const clospopupebtn = document.querySelector('.close-popup-btn')
 document.addEventListener('DOMContentLoaded', () => {
   displayPlayers(playersData)
 })
@@ -77,3 +80,15 @@ positioninput.addEventListener('input',filterPosition)
   }
   nationalityinput.addEventListener('input',filterNationality)
   
+//Add Player 
+function AddPlayer(){
+  addplayer.addEventListener('click',()=>{
+    playerPopup.classList.toggle('block')
+  })
+
+  clospopupebtn.addEventListener('click',()=>{
+    playerPopup.classList.toggle('block')
+  })
+    
+}
+AddPlayer()
