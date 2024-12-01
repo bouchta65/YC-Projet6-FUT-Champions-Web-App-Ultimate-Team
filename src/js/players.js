@@ -11,6 +11,7 @@ const nationalityinput = document.getElementById('nationality-filter')
 const playerPopup = document.querySelector('.player-popup')
 const addplayer = document.getElementById('addplayer')
 const clospopupebtn = document.querySelector('.close-popup-btn')
+const trselected= document.getElementById('tr-zone')
 
 // Player inputs :
 const playername = document.getElementById('player-name')
@@ -29,14 +30,17 @@ const playerdefending = document.getElementById('player-defending')
 const playerphysical = document.getElementById('player-physical')
 const addplayerbutton = document.getElementById('add-player')
 document.addEventListener('DOMContentLoaded', () => {
+  
   displayPlayers(playersData)
 })
+
+
 
 function displayPlayers(playerListe) {
   for (let i = 0; i <playerListe.length; i++) {
     const player = playerListe[i]
     tabledata += `
-        <tr>
+        <tr id="tr-zone">
           <td><img src="${player.photo}" class="player-img"></td>
           <td>${player.name}</td>
           <td><img src="${player.flag}" class="flag-img"> ${player.nationality}</td>
@@ -49,11 +53,17 @@ function displayPlayers(playerListe) {
           <td>${player.dribbling}</td>
           <td>${player.defending}</td>
           <td>${player.physical}</td>
+            <td>
+            <a href="#" class="edit-btn" onClick="updateData(${i})"><i class="fas fa-edit"></i></a></td>
+        <td><a href="#" class="delete-btn" onClick="deleteData(${i})"><i class="fas fa-trash"></i></a></td>
+
+     
         </tr>
     `;
 
   }
   document.querySelector('.body-table').innerHTML = tabledata;
+
 }
 
 // search a player
@@ -148,4 +158,13 @@ function AddPlayer(){
     
 }
 AddPlayer()
+
+// Delete Function
+function deleteData(index) {
+  playersData.splice(index, 1);
+  localStorage.setItem('players', JSON.stringify(playersData));
+  tabledata=''
+  displayPlayers(playersData)
+
+}
 
