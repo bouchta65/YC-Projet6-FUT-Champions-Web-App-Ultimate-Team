@@ -120,43 +120,46 @@ function AddPlayer(){
     playerPopup.classList.toggle('block')
   })
 
-  document.querySelector("#formplayer").addEventListener('submit' , function(e){
-    e.preventDefault(); 
-   // Handle image to Base64 conversion
-   const reader = new FileReader();
-   const photoFile = playerimage.files[0];
-   const flagFile = flagimage.files[0];
-   const logoFile = clubimage.files[0];
+  document.querySelector("#formplayer").addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    if (validatePlayerForm()) {
+        const reader = new FileReader();
+        const photoFile = playerimage.files[0];
+        const flagFile = flagimage.files[0];
+        const logoFile = clubimage.files[0];
 
-   if (photoFile && flagFile && logoFile) {
-     reader.onload = function (e) {
-       const player = {
-         name: playername.value,
-         photo: e.target.result, 
-         position: playerposition.value,
-         nationality: playernationality.value,
-         flag: e.target.result,
-         club: playerclub.value,
-         logo: e.target.result,
-         rating: playerrating.value,
-         pace: playerpace.value,
-         shooting: playershooting.value,
-         passing: playerpassing.value,
-         dribbling: playerdribbling.value,
-         defending: playerdefending.value,
-         physical: playerphysical.value,
-       };
+        if (photoFile && flagFile && logoFile) {
+            reader.onload = function (e) {
+                const player = {
+                    name: playername.value,
+                    photo: e.target.result,
+                    position: playerposition.value,
+                    nationality: playernationality.value,
+                    flag: e.target.result,
+                    club: playerclub.value,
+                    logo: e.target.result,
+                    rating: playerrating.value,
+                    pace: playerpace.value,
+                    shooting: playershooting.value,
+                    passing: playerpassing.value,
+                    dribbling: playerdribbling.value,
+                    defending: playerdefending.value,
+                    physical: playerphysical.value,
+                };
 
-       playersData.push(player);
-       localStorage.setItem('players', JSON.stringify(playersData));
-        tabledata = ''
-       displayPlayers(playersData);
-       playerPopup.classList.remove('block'); 
-     };
+                playersData.push(player);
+                localStorage.setItem('players', JSON.stringify(playersData));
+                tabledata = '';
+                displayPlayers(playersData);
+                playerPopup.classList.remove('block');
+            };
 
-     reader.readAsDataURL(photoFile);
-   } 
-})
+            reader.readAsDataURL(photoFile);
+        }
+    }
+});
+
 
     
 }
@@ -173,7 +176,7 @@ function deleteData(index) {
 
 // Edit Function
 function updateData(index) {
-  playerPopup.classList.add("block"); // Show the popup for editing
+  playerPopup.classList.add("block"); 
   addplayerbutton.value =  "Edit Player"
   textpopup.innerText =  "Edit Player"
 
@@ -209,15 +212,80 @@ function updateData(index) {
       defending: playerdefending.value,
       physical: playerphysical.value,
     };
-
-    localStorage.setItem("players", JSON.stringify(playersData));
-    tabledata = "";
-    displayPlayers(playersData);
-
-    playerPopup.classList.remove("block");
+      if(validatePlayerFormforupdate()){
+      localStorage.setItem("players", JSON.stringify(playersData));
+      tabledata = "";
+      displayPlayers(playersData);
+      playerPopup.classList.remove("block");
+    }
   };
+  
+   
 
   clospopupebtn.addEventListener("click", () => {
     playerPopup.classList.remove("block");
   });
+}
+
+//validation input function
+function validatePlayerForm() {
+  const playerName = playername.value.trim();
+  const playerNationality = playernationality.value.trim();
+  const playerPosition = playerposition.value.trim();
+  const playerRating = playerrating.value.trim();
+  const playerPace = playerpace.value.trim();
+  const playerShooting = playershooting.value.trim();
+  const playerPassing = playerpassing.value.trim();
+  const playerDribbling = playerdribbling.value.trim();
+  const playerDefending = playerdefending.value.trim();
+  const playerPhysical = playerphysical.value.trim();
+
+  if (!playerName || !playerNationality || !playerPosition || !playerRating || !playerPace || !playerShooting || !playerPassing || !playerDribbling || !playerDefending || !playerPhysical) {
+      alert("Tous les champs doivent être remplis");
+      return false;
+  }
+
+  if (isNaN(playerRating) || isNaN(playerPace) || isNaN(playerShooting) || isNaN(playerPassing) || isNaN(playerDribbling) || isNaN(playerDefending) || isNaN(playerPhysical)) {
+      alert("Les attributs du joueur doivent être des nombres valides");
+      return false;
+  }
+
+  if (playerRating < 1 || playerRating > 100) {
+      alert("Le rating doit être entre 1 et 100 !");
+      return false;
+  }
+  if (playerPace < 1 || playerPace > 100 || playerShooting < 1 || playerShooting > 100 || playerPassing < 1 || playerPassing > 100 || playerDribbling < 1 || playerDribbling > 100 || playerDefending < 1 || playerDefending > 100 || playerPhysical < 1 || playerPhysical > 100) {
+      alert("Les attributs doivent être entre 1 et 100 !");
+      return false;
+  }
+
+  return true;
+}
+
+//validation input function for update
+function validatePlayerFormforupdate() {
+  const playerName = playername.value.trim();
+  const playerNationality = playernationality.value.trim();
+  const playerPosition = playerposition.value.trim();
+  const playerRating = playerrating.value.trim();
+  const playerPace = playerpace.value.trim();
+  const playerShooting = playershooting.value.trim();
+  const playerPassing = playerpassing.value.trim();
+  const playerDribbling = playerdribbling.value.trim();
+  const playerDefending = playerdefending.value.trim();
+  const playerPhysical = playerphysical.value.trim();
+
+  if (!playerName || !playerNationality || !playerPosition || !playerRating || !playerPace || !playerShooting || !playerPassing || !playerDribbling || !playerDefending || !playerPhysical) {
+      return false;
+  }
+
+  if (isNaN(playerRating) || isNaN(playerPace) || isNaN(playerShooting) || isNaN(playerPassing) || isNaN(playerDribbling) || isNaN(playerDefending) || isNaN(playerPhysical)) {
+      return false;
+  }
+
+  if (playerRating < 1 || playerRating > 100 || playerPace < 1 || playerPace > 100 || playerShooting < 1 || playerShooting > 100 || playerPassing < 1 || playerPassing > 100 || playerDribbling < 1 || playerDribbling > 100 || playerDefending < 1 || playerDefending > 100 || playerPhysical < 1 || playerPhysical > 100) {
+      return false;
+  }
+
+  return true;  // Return true if all validations pass
 }
