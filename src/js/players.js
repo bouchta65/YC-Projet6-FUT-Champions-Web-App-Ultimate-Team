@@ -7,6 +7,7 @@ const playersData = JSON.parse(localStorage.getItem("players"));
 const searchinput = document.querySelector('.search-input')
 const sortinput = document.getElementById('sort-by')
 const positioninput = document.getElementById('position-filter')
+const nationalityinput = document.getElementById('nationality-filter')
 document.addEventListener('DOMContentLoaded', () => {
   displayPlayers(playersData)
 })
@@ -58,7 +59,7 @@ function sortPlayer(){
   sortinput.addEventListener('input',sortPlayer)
 
 
-  //filter by Position
+//filter by Position
 function filterPosition(){
   tabledata = ''
   const positionvalue = positioninput.value
@@ -66,3 +67,13 @@ function filterPosition(){
   displayPlayers(playerFiltred)
 }
 positioninput.addEventListener('input',filterPosition)
+
+//filter by Nationality
+  function filterNationality(){
+    tabledata = ''
+    const nationalityvalue = nationalityinput.value
+    const playerFiltred = playersData.filter(player => player.nationality === nationalityvalue)
+    displayPlayers(playerFiltred)
+  }
+  nationalityinput.addEventListener('input',filterNationality)
+  
