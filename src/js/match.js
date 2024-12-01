@@ -227,9 +227,10 @@ function replacePlusToPlayer(){
             if (box) {
                 box.classList.add("bgcolor");
                 box.innerHTML = `
-                    <div class="player2-image"><img src="${player.photo}" ></div>
+                    <div class="player2-image"><img src="${player.photo}" >
                     <span class="player2-rating">${player.rating}</span>
                     <span class="player2-positon">${player.position}</span>
+                    </div>
                 `;
             }
             

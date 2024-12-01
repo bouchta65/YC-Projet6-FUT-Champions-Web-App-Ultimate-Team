@@ -87,7 +87,7 @@ function sortPlayer(){
     const sortedPlayers = playersData.sort((a, b) => b[sortvalue] - a[sortvalue]);
     displayPlayers(sortedPlayers)
   }
-  sortinput.addEventListener('input',sortPlayer)
+sortinput.addEventListener('input',sortPlayer)
 
 
 //filter by Position
