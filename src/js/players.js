@@ -11,6 +11,7 @@ const nationalityinput = document.getElementById('nationality-filter')
 const playerPopup = document.querySelector('.player-popup')
 const addplayer = document.getElementById('addplayer')
 const clospopupebtn = document.querySelector('.close-popup-btn')
+const textpopup= document.querySelector('.text-popup')
 const trselected= document.getElementById('tr-zone')
 
 // Player inputs :
@@ -35,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
 })
 
 
-
+//Display Players
 function displayPlayers(playerListe) {
   for (let i = 0; i <playerListe.length; i++) {
     const player = playerListe[i]
@@ -111,6 +112,8 @@ positioninput.addEventListener('input',filterPosition)
 function AddPlayer(){
   addplayer.addEventListener('click',()=>{
     playerPopup.classList.toggle('block')
+    addplayerbutton.value =  "Add New Player"
+    textpopup.innerText =  "Add New Player"
   })
 
   clospopupebtn.addEventListener('click',()=>{
@@ -168,3 +171,53 @@ function deleteData(index) {
 
 }
 
+// Edit Function
+function updateData(index) {
+  playerPopup.classList.add("block"); // Show the popup for editing
+  addplayerbutton.value =  "Edit Player"
+  textpopup.innerText =  "Edit Player"
+
+  const player = playersData[index];
+
+  playername.value = player.name;
+  playernationality.value = player.nationality;
+  playerposition.value = player.position;
+  playerclub.value = player.club;
+  playerrating.value = player.rating;
+  playerpace.value = player.pace;
+  playershooting.value = player.shooting;
+  playerpassing.value = player.passing;
+  playerdribbling.value = player.dribbling;
+  playerdefending.value = player.defending;
+  playerphysical.value = player.physical;
+
+  const form = document.querySelector("#formplayer");
+  form.onsubmit = function (e) {
+    e.preventDefault(); 
+
+    playersData[index] = {
+      ...playersData[index], 
+      name: playername.value,
+      nationality: playernationality.value,
+      position: playerposition.value,
+      club: playerclub.value,
+      rating: playerrating.value,
+      pace: playerpace.value,
+      shooting: playershooting.value,
+      passing: playerpassing.value,
+      dribbling: playerdribbling.value,
+      defending: playerdefending.value,
+      physical: playerphysical.value,
+    };
+
+    localStorage.setItem("players", JSON.stringify(playersData));
+    tabledata = "";
+    displayPlayers(playersData);
+
+    playerPopup.classList.remove("block");
+  };
+
+  clospopupebtn.addEventListener("click", () => {
+    playerPopup.classList.remove("block");
+  });
+}
