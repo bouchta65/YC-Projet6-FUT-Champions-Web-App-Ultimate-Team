@@ -10,13 +10,13 @@ const positionSelect = document.getElementById('Position-filter');
 const ratingstatistics = document.getElementById('ratingstatistics')
 const selectedPlayers = JSON.parse(localStorage.getItem('selectedPlayers')) || [];
 const playersData = JSON.parse(localStorage.getItem("players")); 
-
+const searchinput = document.querySelector('.search-input')
 
 document.addEventListener('DOMContentLoaded', () => { 
     replacePlusToPlayer()   
     displayPlayerSelected()
     playersPosition()
-    displayPlayersList()
+    displayPlayersList(playersData)
     resetData()
     someStatistics()
 });
@@ -65,17 +65,18 @@ function displayerPlayerPopup(position){
 }
 
 // Function to display players in the liste
-function displayPlayersList(){
-    for (let i = 0; i < 24; i++) {
+function displayPlayersList(playerliste){
+    for (let i = 0; i < playerliste.length; i++) {
+        const player = playerliste[i];
         dataPlus += `
-         <div class="player-small-card" data-index="${i}">
+         <div class="player-small-card">
     <div class="player-header">
-        <img class="player-image" src="${playersData[i].photo}" alt="${playersData[i].name}">
+        <img class="player-image" src="${player.photo}" >
     </div>
     <div class="player-info">
-        <h4 class="player-name">${playersData[i].name}</h4>
+        <h4 class="player-name">${player.name}</h4>
         <div class="player-rating">
-            <span>Rating: </span><strong>${playersData[i].rating}</strong>
+            <span>Rating: </span><strong>${player.rating}</strong>
         </div>
     </div>
 </div>
@@ -246,4 +247,16 @@ function someStatistics(){
     let result  = (ratingtotal / 11).toFixed(2);
     ratingstatistics.value = "Power Score : "+ result
 }
+
+// search a player
+function searchplayer(){
+    dataPlus = ''
+    searchvalue = searchinput.value.toLowerCase();
+
+    const playersfiltred = playersData.filter(player => {
+        return player.name.toLowerCase().includes(searchvalue); 
+    });
+    displayPlayersList(playersfiltred)
+}
+searchinput.addEventListener('input', searchplayer);
 
