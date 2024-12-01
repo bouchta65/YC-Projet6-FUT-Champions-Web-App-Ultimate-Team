@@ -91,6 +91,8 @@
                   <th>Dribbling</th>
                   <th>Defending</th>
                   <th>Physical</th>
+                  <th>Edit</th>
+                  <th>Delete</th>
                 </tr>
               </thead>
               <tbody class="body-table">
@@ -104,7 +106,7 @@
 
 <div class="player-popup">
   <div class="popup-content">
-      <h3>Add a New Player</h3>
+      <h3 class="text-popup"></h3>
 
       <form action="" id="formplayer">
       <div class="add-player-container">
@@ -149,17 +151,18 @@
 
         <div class="input-group">
           <label for="player-image" class="label">Player Image</label>
-          <input type="file" id="player-image" class="input-field" required>
+          <input type="file" id="player-image" class="input-field" >
+
         </div>
       
         <div class="input-group">
           <label for="flag-image" class="label">Flag Image</label >
-          <input type="file" id="flag-image" class="input-field" required>
+          <input type="file" id="flag-image" class="input-field" >
         </div>
 
         <div class="input-group">
           <label for="club-image" class="label">Club Image</label>
-          <input type="file" id="club-image" class="input-field" required>
+          <input type="file" id="club-image" class="input-field" >
         </div>
 
         <div class="input-group">
@@ -215,7 +218,7 @@
   </div>
 </div> 
 </section>
-    <script src="../js/home.js"></script>
+    <script src="../js/navbar.js"></script>
     <script src="../js/players.js"></script>
     
 </body>

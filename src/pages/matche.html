@@ -19,7 +19,7 @@
         </div>
       </div>
       <div class="logo">
-        <a href="home.html"><img src="../images/logo.png" alt="Logo"></a>
+        <a href="matche.html"><img src="../images/logo.png" alt="Logo"></a>
       </div>
       <!-- Burger Menu -->
       <div class="burger">
@@ -28,14 +28,11 @@
         <div></div>
       </div>
       <ul class="nav-links">
-        <li><a href="home.html">Home</a></li>
         <li><a href="players.html">Players</a></li>
         <li><a href="matche.html">Matche</a></li>
-        <li><a href="statistics.html">Statistics</a></li>
       </ul>
     </nav>
   </section>
-
 
   <section class="hero-section">
     <div class="match-img">
@@ -47,32 +44,23 @@
                   <option value="position1">4-3-3</option>
                   <option value="position2">4-4-2</option>
                 </select>
-                <select id="club-filter" class="filter-input">
-                  <option value="">Filter by Club</option>
-                  <option value="Inter Miami">Inter Miami</option>
-                  <option value="Barcelona">Barcelona</option>
-                  <option value="Paris Saint-Germain">Paris Saint-Germain</option>
-                </select>
-                <select id="sort-by" class="filter-input">
-                  <option value="rating">Sort by Rating</option>
-                  <option value="pace">Sort by Pace</option>
-                  <option value="shooting">Sort by Shooting</option>
-                  <option value="passing">Sort by Passing</option>
-                </select>
+                <input type="button" id="resetbutton" value="Reset Selected Players" class="filter-input">
+                <input type="text" id="ratingstatistics" class="filter-input" readonly>
+                <!-- <h1 id="ratingstatistics">Team Rating : </h1> -->
               </div>
             <div class="">
                 <div class="match-table">
                   <div class="player-bord">
                     <h3>Liste of players</h3>
                     <div class="plus-cards">
-                   
-                      
-
                     </div>
                 </div>
                 <div class="img-terain">
                   <img src="../images/1137.jpg" alt="Field Image">
                 
+                <div class="plus-position">
+                  
+                </div>
                 <div class="players-position">
                   
                 </div>
@@ -96,12 +84,12 @@
     <div class="popup-content">
         <h3>Select Players</h3>
         <div class="player-cards">
-          
+
       </div>
         <button class="close-popup-btn">Close</button>
     </div>
 </div> 
-    <script src="../js/home.js"></script>
+    <script src="../js/navbar.js"></script>
     <script src="../js/match.js"></script>
 </body>
 </html>
