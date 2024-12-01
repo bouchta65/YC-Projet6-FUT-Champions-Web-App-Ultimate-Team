@@ -3,7 +3,7 @@ let tabledata = "";
 const rowsPerPage = 8;
 let currentPage = 0;
 
-const playersData = JSON.parse(localStorage.getItem("players")); 
+const playersData = JSON.parse(localStorage.getItem("players")) || []; 
 const searchinput = document.querySelector('.search-input')
 const sortinput = document.getElementById('sort-by')
 const positioninput = document.getElementById('position-filter')
@@ -11,6 +11,23 @@ const nationalityinput = document.getElementById('nationality-filter')
 const playerPopup = document.querySelector('.player-popup')
 const addplayer = document.getElementById('addplayer')
 const clospopupebtn = document.querySelector('.close-popup-btn')
+
+// Player inputs :
+const playername = document.getElementById('player-name')
+const playernationality = document.getElementById('nationality-player')
+const playerposition = document.getElementById('position-player')
+const playerimage = document.getElementById('player-image')
+const flagimage = document.getElementById('flag-image')
+const clubimage = document.getElementById('club-image')
+const playerclub = document.getElementById('player-club')
+const playerrating = document.getElementById('player-rating')
+const playerpace = document.getElementById('player-pace')
+const playershooting = document.getElementById('player-shooting')
+const playerpassing = document.getElementById('player-passing')
+const playerdribbling = document.getElementById('player-dribbling')
+const playerdefending = document.getElementById('player-defending')
+const playerphysical = document.getElementById('player-physical')
+const addplayerbutton = document.getElementById('add-player')
 document.addEventListener('DOMContentLoaded', () => {
   displayPlayers(playersData)
 })
@@ -89,6 +106,46 @@ function AddPlayer(){
   clospopupebtn.addEventListener('click',()=>{
     playerPopup.classList.toggle('block')
   })
+
+  document.querySelector("#formplayer").addEventListener('submit' , function(e){
+    e.preventDefault(); 
+   // Handle image to Base64 conversion
+   const reader = new FileReader();
+   const photoFile = playerimage.files[0];
+   const flagFile = flagimage.files[0];
+   const logoFile = clubimage.files[0];
+
+   if (photoFile && flagFile && logoFile) {
+     reader.onload = function (e) {
+       const player = {
+         name: playername.value,
+         photo: e.target.result, 
+         position: playerposition.value,
+         nationality: playernationality.value,
+         flag: e.target.result,
+         club: playerclub.value,
+         logo: e.target.result,
+         rating: playerrating.value,
+         pace: playerpace.value,
+         shooting: playershooting.value,
+         passing: playerpassing.value,
+         dribbling: playerdribbling.value,
+         defending: playerdefending.value,
+         physical: playerphysical.value,
+       };
+
+       playersData.push(player);
+       localStorage.setItem('players', JSON.stringify(playersData));
+        tabledata = ''
+       displayPlayers(playersData);
+       playerPopup.classList.remove('block'); 
+     };
+
+     reader.readAsDataURL(photoFile);
+   } 
+})
+
     
 }
 AddPlayer()
+
