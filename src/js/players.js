@@ -5,10 +5,12 @@ let currentPage = 0;
 
 const playersData = JSON.parse(localStorage.getItem("players")); 
 const searchinput = document.querySelector('.search-input')
+const sortinput = document.getElementById('sort-by')
 
 document.addEventListener('DOMContentLoaded', () => {
   displayPlayers(playersData)
 })
+
 function displayPlayers(playerListe) {
   for (let i = 0; i <playerListe.length; i++) {
     const player = playerListe[i]
@@ -45,4 +47,22 @@ displayPlayers(playersfiltred)
 }
 searchinput.addEventListener('input', searchplayer);
 
-
+//Sort by statistic 
+function sortPlayer(){
+  tabledata = ''
+    const sortvalue = sortinput.value
+    if(sortvalue==='rating'){
+      const sortedPlayers = playersData.sort((a, b) => b.rating - a.rating);
+      displayPlayers(sortedPlayers)
+    }else if(sortvalue==='pace'){
+      const sortedPlayers = playersData.sort((a, b) => b.pace - a.pace);
+      displayPlayers(sortedPlayers)
+    }else if(sortvalue==='shooting'){
+      const sortedPlayers = playersData.sort((a, b) => b.shooting - a.shooting);
+      displayPlayers(sortedPlayers)
+    }else if(sortvalue==='passing'){
+      const sortedPlayers = playersData.sort((a, b) => b.passing - a.passing);
+      displayPlayers(sortedPlayers)
+    }
+  }
+  sortinput.addEventListener('input',sortPlayer)
