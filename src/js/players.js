@@ -1,64 +1,48 @@
-const api = "https://bouchta65.github.io/YC-Projet6-FUT-Champions-Web-App-Ultimate-Team/api/formatted_players.json";
+// Les Variables : 
 let tabledata = "";
 const rowsPerPage = 8;
 let currentPage = 0;
 
-async function playersapi() {
-  const response = await fetch(api);
-  const data = await response.json();
-  localStorage.setItem("players", JSON.stringify(data.players));
-  displayPlayers(); 
-}
+const playersData = JSON.parse(localStorage.getItem("players")); 
+const searchinput = document.querySelector('.search-input')
 
-function displayPlayers() {
-  const playersData = JSON.parse(localStorage.getItem("players")); 
-  console.table(playersData);
-  
-  tabledata = "";
-  
-  for (let i = currentPage * rowsPerPage; i < (currentPage + 1) * rowsPerPage && i < playersData.length; i++) {
+document.addEventListener('DOMContentLoaded', () => {
+  displayPlayers(playersData)
+})
+function displayPlayers(playerListe) {
+  for (let i = 0; i <playerListe.length; i++) {
+    const player = playerListe[i]
     tabledata += `
         <tr>
-          <td><img src="${playersData[i].photo}" class="player-img"></td>
-          <td>${playersData[i].name}</td>
-          <td><img src="${playersData[i].flag}" class="flag-img"> ${playersData[i].nationality}</td>
-          <td><img src="${playersData[i].logo}" class="club-logo">${playersData[i].club}</td>
-          <td>${playersData[i].position}</td>
-          <td>${playersData[i].rating}</td>
-          <td>${playersData[i].pace}</td>
-          <td>${playersData[i].shooting}</td>
-          <td>${playersData[i].passing}</td>
-          <td>${playersData[i].dribbling}</td>
-          <td>${playersData[i].defending}</td>
-          <td>${playersData[i].physical}</td>
+          <td><img src="${player.photo}" class="player-img"></td>
+          <td>${player.name}</td>
+          <td><img src="${player.flag}" class="flag-img"> ${player.nationality}</td>
+          <td><img src="${player.logo}" class="club-logo">${player.club}</td>
+          <td>${player.position}</td>
+          <td>${player.rating}</td>
+          <td>${player.pace}</td>
+          <td>${player.shooting}</td>
+          <td>${player.passing}</td>
+          <td>${player.dribbling}</td>
+          <td>${player.defending}</td>
+          <td>${player.physical}</td>
         </tr>
-  
     `;
-  }
 
+  }
   document.querySelector('.body-table').innerHTML = tabledata;
-
-  updateButtons(playersData);
 }
 
-function updateButtons(playersData) {
-  document.getElementById("prev-page").disabled = currentPage === 0;
-  document.getElementById("next-page").disabled = (currentPage + 1) * rowsPerPage >= playersData.length;
+// search a player
+function searchplayer(){
+  tabledata = ''
+  searchvalue = searchinput.value.toLowerCase();
+  const playersfiltred = playersData.filter(player => {
+      return player.name.toLowerCase().includes(searchvalue); 
+  });
+
+displayPlayers(playersfiltred)
 }
+searchinput.addEventListener('input', searchplayer);
 
-document.getElementById("prev-page").addEventListener("click", () => {
-  if (currentPage > 0) {
-    currentPage--;
-    displayPlayers(); 
-  }
-});
 
-document.getElementById("next-page").addEventListener("click", () => {
-  const playersData = JSON.parse(localStorage.getItem("players"));
-  if ((currentPage + 1) * rowsPerPage < playersData.length) {
-    currentPage++;
-    displayPlayers();
-  }
-});
-
-playersapi();
