@@ -23,8 +23,3 @@ The application solves the problem by offering a simple interface for creating a
 - **API**: Fetches external player data and stats for better team management.
 - **LocalStorage**: Stores player and formation data locally for persistent access.
 
-## Installation
-
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/your-username/fut-team-builder.git
