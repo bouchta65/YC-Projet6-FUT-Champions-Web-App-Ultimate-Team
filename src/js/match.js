@@ -25,12 +25,12 @@ document.addEventListener('DOMContentLoaded', () => {
 function displayerPlayerPopup(position){  
     let table = ""
     filtredPlayers = []
-    for(let i = 0 ; i<24 && i<playersData.length;i++){
+    for(let i = 0 ; i<playersData.length;i++){
         if (playersData[i].position === position) {
             filtredPlayers.push(playersData[i]);
         }
     }
-    for(let i = 0 ; i<24 && i<filtredPlayers.length;i++){
+    for(let i = 0 ; i<filtredPlayers.length;i++){
 
         table += 
         `
@@ -133,7 +133,7 @@ function playersPosition(){
     selectedPosition.addEventListener("change", playersPosition);
 }
 
-//sclose the popup if after the click in colde button
+//close the popup if after the click in colde button
 document.querySelector('.close-popup-btn').addEventListener('click',()=>{
     playerPopup.classList.toggle("block")
 })
@@ -168,7 +168,7 @@ function displayPlayerSelected() {
                 document.querySelectorAll('.player-card').forEach((card) => {
                     card.addEventListener('click', () => {
                         
-                        const playerIndex = card.getAttribute('data-index'); 
+                        const playerIndex = card.getAttribute('data-index');     
                         const playerSlectedData = filtredPlayers[playerIndex];
 
                         if (playerSlectedData && boxSelected) {
@@ -218,7 +218,7 @@ function resetData() {
     });
 }
  
-// display the player selected in the terain
+// display the player selected in the terain 
 function replacePlusToPlayer(){
         for (let i = 0; i < selectedPlayers.length; i++) {
             const { boxIndex, player } = selectedPlayers[i];
