@@ -3,25 +3,29 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="refresh" content="0; url=./src/pages/matche.html" />
   <link href="./src/pages/matche.html" rel="stylesheet">
 </head>
 <body>
   <h1 class="text-9xl font-bold underline text-red-500 bg-red-950">
     You will be redirected to the homepage if you do not click <a href="./src/pages/matche.html">here</a>. </h1>
+  
   <script>
     const api = "https://bouchta65.github.io/YC-Projet6-FUT-Champions-Web-App-Ultimate-Team/api/formatted_players.json";
 
-async function playersapi() {
-  const response = await fetch(api);
-  const data = await response.json();
-  localStorage.setItem("players", JSON.stringify(data.players));
-  let playersData = JSON.parse(localStorage.getItem("players")) || [];
+    async function playersapi() {
+      try {
+        const response = await fetch(api);
+        const data = await response.json();
+        localStorage.setItem("players", JSON.stringify(data.players));
 
-}
+        // After storing the data in localStorage, redirect
+        window.location.href = './src/pages/matche.html';
+      } catch (error) {
+        console.error('Error fetching player data:', error);
+      }
+    }
 
-playersapi()
-
+    playersapi();
   </script>
 </body>
 </html>
