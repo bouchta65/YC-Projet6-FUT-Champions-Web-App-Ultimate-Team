@@ -392,8 +392,79 @@
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
   transition: transform 0.2s, box-shadow 0.2s;
   position: absolute;
-  top: 0;
-  left: 0;
+}
+
+/* Goalkeeper position */
+.add-player-box.gk {
+  bottom: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* Defense positions for 4-3-3 formation */
+.add-player-box.lb {
+  bottom: 25%;
+  left: 15%;
+}
+
+.add-player-box.cb:nth-of-type(2) {
+  bottom: 25%;
+  left: 35%;
+}
+
+.add-player-box.cb:nth-of-type(3) {
+  bottom: 25%;
+  left: 55%;
+}
+
+.add-player-box.rb {
+  bottom: 25%;
+  right: 15%;
+}
+
+/* Midfield positions for 4-3-3 formation */
+.add-player-box.cm:nth-of-type(6) {
+  bottom: 45%;
+  left: 25%;
+}
+
+.add-player-box.cm:nth-of-type(7) {
+  bottom: 45%;
+  left: 45%;
+}
+
+.add-player-box.cm:nth-of-type(8) {
+  bottom: 45%;
+  right: 25%;
+}
+
+/* Wing positions for 4-3-3 formation */
+.add-player-box.lw {
+  bottom: 65%;
+  left: 20%;
+}
+
+.add-player-box.rw {
+  bottom: 65%;
+  right: 20%;
+}
+
+/* Striker position for 4-3-3 formation */
+.add-player-box.st {
+  bottom: 75%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* Striker positions for 4-4-2 formation */
+.add-player-box.st:nth-of-type(10) {
+  bottom: 75%;
+  left: 40%;
+}
+
+.add-player-box.st:nth-of-type(11) {
+  bottom: 75%;
+  right: 40%;
 }
 
 @media (max-width: 768px) {
